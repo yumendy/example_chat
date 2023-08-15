@@ -52,7 +52,7 @@ export default {
       });
       this.text = '';
       this.scrollToBottom();
-      axios.get('/functions/chat', {
+      axios.get('/functions/chat_test', {
         params: queryArgs
       }).then((response)=> {
         const resData = response.data.data;
