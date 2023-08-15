@@ -20,7 +20,9 @@ async function handleRequest(req) {
             }
         };
         let randomIndex = Math.floor(Math.random() * responseMsgs.length);
-        rspData.data.chatMsg = `[自动回复] ${responseMsgs[randomIndex]}`;
+        await kv.put("random_index", randomIndex);
+        var value = await kv.get("random_index");
+        rspData.data.chatMsg = `[自动回复] ${responseMsgs[randomIndex]} random index from kv ${value}`;
         return new Response(JSON.stringify(rspData), {
             headers: {
                 "content-type": "application/json",
